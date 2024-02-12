@@ -43,7 +43,7 @@ public class StockManagerSingleton {
 			}
 			fileIn.close();//closes file
 			
-			/* testing purposes
+			/* testing piurposes
 			 *  for(int i = 0; i < inventory.size(); i++) {
 			 * System.out.println(inventory.get(i)); }
 			 */
@@ -58,26 +58,26 @@ public class StockManagerSingleton {
 	
 	//Matthew wrote this code
 	//Loops through the inventory array list and creates MediaProduct item through the
-	//inventory at the designeted spot and determines if the item equals the product with a boolean (True or false)
+	//inventory at the designated spot and determines if the item equals the product with a boolean (True or false)
 	//If true updates the item price through getters and setters and returns true. Otherwise prints error message and returns false
 	public boolean updateItemPrice(MediaProduct product, double newPrice)
 	{
-			for(int i = 0; i < inventory.size(); i++ )
-			{
-				MediaProduct item = inventory.get(i);
-	            if (item.equals(product)) 
-	            {
-	                item.setPrice(newPrice);
-	                return true; 
-	            }
+		for(int i = 0; i < inventory.size(); i++ )
+		{
+			MediaProduct item = inventory.get(i);
+	        if (item.equals(product)) 
+	        {
+	        	item.setPrice(newPrice);
+	            return true; 
+	        }
 	            
-			}
+		}
 		System.out.println("Updating the Item Price failed. Try again!");
 		return false;
 	}
 	
 	//Matthew wrote this code
-	//Determines if the product is nol or not, if it is not null, adds a product to the MediaProducts and returns true. 
+	//Determines if the product is null or not, if it is not null, adds a product to the MediaProducts and returns true. 
 	//If product is null it returns false
 	public boolean addItem(MediaProduct product)
 	{
@@ -88,10 +88,26 @@ public class StockManagerSingleton {
 		return false;
 		
 	}
-//	public boolean removeItem(MediaProduct product)
-//	{
-//		return true;
-//	}
+	//Matthew wrote this code
+	//Determines if product is null, and if it isn't it loops through size of the inventory 
+	//array list. at the selected spot where item equals the product, it removes the value at 
+	//the designated inventory spot.
+	public boolean removeItem(MediaProduct product)
+	{
+		if (product != null) 
+		{
+	        for (int i = 0; i < inventory.size(); i++) 
+	        {
+	            MediaProduct item = inventory.get(i);
+	            if (item.equals(product)) 
+	            {
+	                inventory.remove(i); 
+	                return true; 
+	            }
+	        }
+	    }
+	    return false;
+	}
 //	public boolean saveStock()
 //	{
 //		return true;

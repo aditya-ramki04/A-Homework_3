@@ -16,18 +16,8 @@ public class StockManagerSingleton {
 	
 	
 	public StockManagerSingleton() 
-	{
-		
+	{	
 	}
-	    
-	public static synchronized StockManagerSingleton getInstance() 
-	{
-        if (instance == null) 
-        {
-            instance = new StockManagerSingleton();
-        }
-        return instance;
-    }
 
 	public boolean initializeStock()
 	{
@@ -66,27 +56,38 @@ public class StockManagerSingleton {
 		}
 	}
 	
+	//Matthew wrote this code
+	//Loops through the inventory array list and creates MediaProduct item through the
+	//inventory at the designeted spot and determines if the item equals the product with a boolean (True or false)
+	//If true updates the item price through getters and setters and returns true. Otherwise prints error message and returns false
 	public boolean updateItemPrice(MediaProduct product, double newPrice)
 	{
-		for (MediaProduct item : inventory) 
-		{
-            if (item.equals(product)) 
-            {
-                // Update the price
-                item.setPrice(newPrice);
-                return true; // Update successful
-            }
-            
-		}
+			for(int i = 0; i < inventory.size(); i++ )
+			{
+				MediaProduct item = inventory.get(i);
+	            if (item.equals(product)) 
+	            {
+	                item.setPrice(newPrice);
+	                return true; 
+	            }
+	            
+			}
 		System.out.println("Updating the Item Price failed. Try again!");
 		return false;
-            
 	}
 	
-//	public boolean addItem(MediaProduct product)
-//	{
-//		return true;
-//	}
+	//Matthew wrote this code
+	//Determines if the product is nol or not, if it is not null, adds a product to the MediaProducts and returns true. 
+	//If product is null it returns false
+	public boolean addItem(MediaProduct product)
+	{
+		if(product != null) {
+			MediaProduct.add(product);
+			return true;
+		}
+		return false;
+		
+	}
 //	public boolean removeItem(MediaProduct product)
 //	{
 //		return true;

@@ -52,6 +52,11 @@ public class MediaProduct {
 	public void setGenre(Genre genre) {
 		this.genre = genre;
 	}
+	
+	public static void add(MediaProduct product) {
+
+		MediaProduct.add(product);
+	}
 
 }
 

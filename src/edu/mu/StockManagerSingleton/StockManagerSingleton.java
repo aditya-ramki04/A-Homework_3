@@ -12,7 +12,7 @@ public class StockManagerSingleton {
 	private static StockManagerSingleton instance = null;
 	// Define paths as final so that they cannot be modified later.
 	private static String inventoryFilePath = "inventory.csv";
-	private ArrayList<MediaProduct> inventory = new ArrayList<MediaProduct>();
+	public ArrayList<MediaProduct> inventory = new ArrayList<MediaProduct>();
 	
 	
 	public StockManagerSingleton() 
@@ -35,11 +35,23 @@ public class StockManagerSingleton {
 			{
 				String line = fileIn.nextLine(); //gets the next line to hold the whole line 
 				String parts[] = line.split(","); //splits the line at each " " so now the parts array has the id, Name, grade
+				String type = parts[0];
 				String title = parts[1];
 				double price = Double.parseDouble(parts[2]);
 				int year = Integer.parseInt(parts[3]); //using parseInt to parse it from String to int and then storing it in id.
 				Genre genre = Genre.valueOf(parts[4]);
-				inventory.add(new MediaProduct(title, price, year, genre));
+				
+				//System.out.println(type);
+				if(type.equals("CD")) {
+					inventory.add(new CDRecordProduct(title, price, year, genre));	
+				}
+				if(type.equals("Vinyl")) {
+					inventory.add(new VinalRecordProduct(title, price, year, genre));
+				}
+				if(type.equals("Tape")) {
+					inventory.add(new TapeRecordProduct(title, price, year, genre));
+				}
+				//inventory.add(new MediaProduct(title, price, year, genre));
 			}
 			fileIn.close();//closes file
 			
@@ -47,6 +59,11 @@ public class StockManagerSingleton {
 			 *  for(int i = 0; i < inventory.size(); i++) {
 			 * System.out.println(inventory.get(i)); }
 			 */
+			
+			for(int i = 0; i < inventory.size(); i++) {
+				System.out.println(inventory.get(i));
+			}
+			
 			return true;
 		} catch (FileNotFoundException e) //if file not found then return no file found and return false.
 		{

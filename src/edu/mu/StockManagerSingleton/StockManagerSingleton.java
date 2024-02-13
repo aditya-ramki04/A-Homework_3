@@ -12,7 +12,7 @@ public class StockManagerSingleton {
 	private static StockManagerSingleton instance = null;
 	// Define paths as final so that they cannot be modified later.
 	private static String inventoryFilePath = "inventory.csv";
-	public ArrayList<MediaProduct> inventory = new ArrayList<MediaProduct>();
+	private ArrayList<MediaProduct> inventory = new ArrayList<MediaProduct>();
 	
 	
 	public StockManagerSingleton() 

@@ -129,6 +129,7 @@ public class StockManagerSingleton {
 	    }
 	    return false;
 	}
+	
 	//by nitin
 	public boolean saveStock()
 	{
@@ -156,14 +157,20 @@ public class StockManagerSingleton {
 		}
 		
 	}
-	//by nitin
 	
 	public ArrayList<MediaProduct> getMediaProductBelowPrice(int maxPrice)
 	{
-		return 0;
+		ArrayList<MediaProduct> BelowmaxPrice = new ArrayList<>();
+		
+		for(MediaProduct product : inventory) {
+			if(product.getPrice() < maxPrice) {
+				BelowmaxPrice.add(product);
+			}
+		}
+		
+		return BelowmaxPrice;
 	}
 	
-	//by nitin
 	public void printListOfMediaProduct(ArrayList<MediaProduct> productList)
 	{
 		for(MediaProduct product : inventory) {

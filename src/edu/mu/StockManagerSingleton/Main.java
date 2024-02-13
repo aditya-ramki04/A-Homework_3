@@ -1,5 +1,7 @@
 package edu.mu.StockManagerSingleton;
 
+import java.util.ArrayList;
+
 import edu.mu.MediaProduct.Genre;
 import edu.mu.MediaProduct.MediaProduct;
 
@@ -9,6 +11,14 @@ public class Main {
 		StockManagerSingleton stockManager = new StockManagerSingleton();
 		stockManager.initializeStock();
 		
+		//made by nitin to test getMediaProductBelowPrice
+//		ArrayList<MediaProduct> BelowmaxPrice = stockManager.getMediaProductBelowPrice((int) 10.0); 
+//		for(MediaProduct product : BelowmaxPrice) {
+//			System.out.println(product);
+//		}
+
+		// Do something with the belowMaxPriceProducts list
+
 
 //	    // Update the price of a product
 //	    boolean updateSuccessful = stockManager.updateItemPrice(stockManager.inventory.get(0), 30.0);

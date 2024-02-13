@@ -64,9 +64,9 @@ public class StockManagerSingleton {
 			 * System.out.println(inventory.get(i)); }
 			 */
 			
-			for(int i = 0; i < inventory.size(); i++) {
-				System.out.println(inventory.get(i));
-			}
+//			for(int i = 0; i < inventory.size(); i++) {
+//				System.out.println(inventory.get(i));
+//			}
 			
 			return true;
 		} catch (FileNotFoundException e) //if file not found then return no file found and return false.
@@ -129,7 +129,7 @@ public class StockManagerSingleton {
 	    }
 	    return false;
 	}
-	
+	//by nitin
 	public boolean saveStock()
 	{
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(inventoryFilePath))){	
@@ -156,14 +156,21 @@ public class StockManagerSingleton {
 		}
 		
 	}
-//	public ArrayList<MediaProduct> getMediaProductBelowPrice(int maxPrice)
-//	{
-//		return 0;
-//	}
-//	public void printListOfMediaProduct(ArrayList<MediaProduct> productList)
-//	{
-//		
-//	}
+	//by nitin
+	
+	public ArrayList<MediaProduct> getMediaProductBelowPrice(int maxPrice)
+	{
+		return 0;
+	}
+	
+	//by nitin
+	public void printListOfMediaProduct(ArrayList<MediaProduct> productList)
+	{
+		for(MediaProduct product : inventory) {
+			System.out.println(product);
+	}
+	}
+	//by nitin
 	
 	public ArrayList<VinylRecordProduct> getVinylRecordList(ArrayList<MediaProduct> productList)
 	{

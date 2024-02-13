@@ -1,8 +1,12 @@
 package edu.mu.StockManagerSingleton;
 import java.util.ArrayList;
 import edu.mu.MediaProduct.*;
+
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 
@@ -125,10 +129,33 @@ public class StockManagerSingleton {
 	    }
 	    return false;
 	}
-//	public boolean saveStock()
-//	{
-//		return true;
-//	}
+	
+	public boolean saveStock()
+	{
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(inventoryFilePath))){	
+			
+			if (inventory.isEmpty()) {
+				System.out.println("Cannot save empty stock.");
+				return false;
+			}
+			writer.write("Title,Price,Year,Genre");
+			writer.newLine();
+
+			// Writing all the stock data to the CSV file
+			for (MediaProduct item : inventory) {
+				writer.write(item.toString());
+				writer.newLine();
+			}
+
+			System.out.println("Stock saved successfully.");
+			return true;
+
+		} catch (IOException e) {
+			System.out.println("Error saving stock: " + e.getMessage());
+			return false;
+		}
+		
+	}
 //	public ArrayList<MediaProduct> getMediaProductBelowPrice(int maxPrice)
 //	{
 //		return 0;

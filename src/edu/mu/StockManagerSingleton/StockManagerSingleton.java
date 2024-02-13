@@ -164,16 +164,45 @@ public class StockManagerSingleton {
 //	{
 //		
 //	}
-//	public ArrayList<VinylRecordProduct>getVinylRecordList(ArrayList<MediaProduct> productList)
-//	{
-//		return true;
-//	}
-//	public ArrayList<CDRecordProduct> getCDRecordsList(ArrayList<MediaProduct> productList)
-//	{
-//		return true;
-//	}
-//	public ArrayList<TapeRecordProduct>getTapeRecordList(ArrayList<MediaProduct> productList)
-//	{
-//		return true;
-//	}
+	
+	public ArrayList<VinylRecordProduct> getVinylRecordList(ArrayList<MediaProduct> productList)
+	{
+		ArrayList<VinylRecordProduct> vinylRecordList = new ArrayList<VinylRecordProduct>();
+		
+		for (MediaProduct type : productList) {
+            if (type instanceof VinylRecordProduct) {
+            	vinylRecordList.add((VinylRecordProduct)type);
+            }
+        }
+
+		return vinylRecordList;
+
+	}
+	
+	public ArrayList<CDRecordProduct> getCDRecordsList(ArrayList<MediaProduct> productList)
+	{
+		ArrayList<CDRecordProduct> cdRecordList = new ArrayList<CDRecordProduct>();
+		
+		for (MediaProduct type : productList) {
+            if (type instanceof CDRecordProduct) {
+                cdRecordList.add((CDRecordProduct)type);
+            }
+        }
+
+		return cdRecordList;
+	}
+	
+	public ArrayList<TapeRecordProduct>getTapeRecordList(ArrayList<MediaProduct> productList)
+	{
+		ArrayList<TapeRecordProduct> tapeRecordList = new ArrayList<TapeRecordProduct>();
+		
+		for (MediaProduct type : productList) {
+            if (type instanceof TapeRecordProduct) {
+            	tapeRecordList.add((TapeRecordProduct)type);
+            }
+        }
+
+		return tapeRecordList;
+
+	}
 }

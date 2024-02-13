@@ -46,7 +46,7 @@ public class StockManagerSingleton {
 					inventory.add(new CDRecordProduct(title, price, year, genre));	
 				}
 				if(type.equals("Vinyl")) {
-					inventory.add(new VinalRecordProduct(title, price, year, genre));
+					inventory.add(new VinylRecordProduct(title, price, year, genre));
 				}
 				if(type.equals("Tape")) {
 					inventory.add(new TapeRecordProduct(title, price, year, genre));

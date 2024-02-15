@@ -198,3 +198,21 @@ public class StockManagerSingleton {
 
 	}
 	
+	//Abhi Wrote this code
+		public ArrayList<CDRecordProduct> getCDRecordsList(ArrayList<MediaProduct> productList)
+		{
+			ArrayList<CDRecordProduct> cdRecordList = new ArrayList<CDRecordProduct>(); //makes
+			///CDRecordProduct ArrayList to hold all the objects that are CDs
+			
+			for (MediaProduct type : productList) { //used a for each loop here to loop through the objects
+	            if (type instanceof CDRecordProduct) { //if it is an instance of CDRecordProduct then add
+	            	//to the cdRecordList
+	                cdRecordList.add((CDRecordProduct)type);
+	            }
+	        }
+
+			return cdRecordList; //then return the ArrayList
+		}
+}
+	
+	

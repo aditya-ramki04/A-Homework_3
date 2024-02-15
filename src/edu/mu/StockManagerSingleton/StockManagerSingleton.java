@@ -213,6 +213,22 @@ public class StockManagerSingleton {
 
 			return cdRecordList; //then return the ArrayList
 		}
+		
+		//Abhi Wrote this code
+		public ArrayList<TapeRecordProduct> getTapeRecordList(ArrayList<MediaProduct> productList)
+		{
+			ArrayList<TapeRecordProduct> tapeRecordList = new ArrayList<TapeRecordProduct>(); //makes
+			///TapeRecordProduct ArrayList to hold all the objects that are Tapes
+			
+			for (MediaProduct type : productList) { //used a for each loop here to loop through the objects
+	            if (type instanceof TapeRecordProduct) { //if it is an instance of TapeRecordProduct then add
+	            	//to the tapeRecordList
+	            	tapeRecordList.add((TapeRecordProduct)type);
+	            }
+	        }
+
+			return tapeRecordList; //then return the ArrayList
+		}
 }
 	
 	

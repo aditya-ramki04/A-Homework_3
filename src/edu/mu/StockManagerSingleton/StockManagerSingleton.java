@@ -15,14 +15,40 @@ public class StockManagerSingleton {
 	
 	private static StockManagerSingleton instance = null;
 	// Define paths as final so that they cannot be modified later.
-	private static String inventoryFilePath = "inventory.csv";
+	private final static String inventoryFilePath = "inventory.csv";
 	private ArrayList<MediaProduct> inventory = new ArrayList<MediaProduct>();
 	
+	/**
+	 * If the StockManagerSingleton has never been created before 
+	 * it will instantiate the object. After it is created it will
+	 * not be created again return the first one that has been created.
+	 * 
+	 * The Singleton Design pattern is for allowing developers to have
+	 * one single instance to prevent synchronization issues. You can 
+	 * consider the Singleton design pattern as a controlled global variable.
+	 * @return the instance of StockManagerSingleton.
+	 */
 	
 	public StockManagerSingleton() 
 	{	
 	}
-
+	
+	public static StockManagerSingleton getInstance()
+	{
+		if(instance == null)
+		{
+			instance = new StockManagerSingleton();
+		}
+		return instance;
+	}
+	//matthew added these to correctly instantiate objects
+	public ArrayList<MediaProduct> getInventory() {
+		return inventory;
+	}
+	public void setInventory(ArrayList<MediaProduct> inventory) {
+		this.inventory = inventory;
+	}
+	
 	public boolean initializeStock()
 	{
 		try {

@@ -6,9 +6,10 @@ public class MediaProduct {
 	protected int year;
 	protected Genre genre;
 	
+	//made by nitin to test getMediaProductBelowPrice
 	@Override
 	public String toString() {
-		return "MediaProduct [title=" + title + ", price=" + price + ", year=" + year + ", genre=" + genre + "]";
+		return "MediaProduct [title= " + title + ", price= " + price + ", year= " + year + ", genre= " + genre + "]";
 	}
 
 	public MediaProduct(String title, double price, int year, Genre genre) {

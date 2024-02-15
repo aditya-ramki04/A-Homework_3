@@ -13,11 +13,6 @@ public class Main {
 		// TODO Auto-generated method stub
 		StockManagerSingleton stockManager = new StockManagerSingleton();
 		stockManager.initializeStock();
-		ArrayList<MediaProduct> BelowmaxPrice = stockManager.getMediaProductBelowPrice((int) 10.0);
-		for(MediaProduct product : BelowmaxPrice) 
-		{
-			System.out.println(product);
-		}
 
 		boolean updateSuccessful = stockManager.updateItemPrice(stockManager.getInventory().get(0), 30.0);
 		System.out.println(stockManager.getInventory().get(0).getPrice());
@@ -39,6 +34,13 @@ public class Main {
 		boolean removeSuccessful = stockManager.removeItem(mediaProduct);
 		System.out.println("\nInventory after attempting to remove the product:");
 		stockManager.printListOfMediaProduct(stockManager.getInventory());
+		
+		ArrayList<MediaProduct> BelowmaxPrice = stockManager.getMediaProductBelowPrice((int) 40.0);
+		System.out.println("\nProducts below price: ");
+		for(MediaProduct product : BelowmaxPrice) 
+		{
+			System.out.println(product);
+		}
 		
 		if (removeSuccessful){
 			System.out.println("\nProduct was removed successfully.");
@@ -67,21 +69,24 @@ public class Main {
         ArrayList<VinylRecordProduct> vinylList = sManager.getVinylRecordList(productList);
         System.out.println("Vinyl Record List:");
         for (VinylRecordProduct vinyl : vinylList) {
-            System.out.println(vinyl); // Assuming VinylRecordProduct has overridden toString() method
+            System.out.println(vinyl); 
         }
 
         ArrayList<CDRecordProduct> cdList = sManager.getCDRecordsList(productList);
         System.out.println("\nCD Record List:");
         for (CDRecordProduct cd : cdList) {
-            System.out.println(cd); // Assuming CDRecordProduct has overridden toString() method
+            System.out.println(cd); 
         }
 
-        // Test getTapeRecordList method
+        
         ArrayList<TapeRecordProduct> tapeList = sManager.getTapeRecordList(productList);
         System.out.println("\nTape Record List:");
         for (TapeRecordProduct tape : tapeList) {
-            System.out.println(tape); // Assuming TapeRecordProduct has overridden toString() method
+            System.out.println(tape); 
         }
-
+        
+        stockManager.saveStock();
 	}
+        
 }
+

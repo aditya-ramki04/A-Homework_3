@@ -1,13 +1,19 @@
 package edu.mu.StockManagerSingleton;
-import java.util.ArrayList;
-import edu.mu.MediaProduct.*;
 
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import edu.mu.MediaProduct.CDRecordProduct;
+import edu.mu.MediaProduct.Genre;
+import edu.mu.MediaProduct.MediaProduct;
+import edu.mu.MediaProduct.TapeRecordProduct;
+import edu.mu.MediaProduct.VinylRecordProduct;
+
 
 
 public class StockManagerSingleton {
@@ -85,7 +91,7 @@ public class StockManagerSingleton {
 			}
 			fileIn.close();//closes file
 			
-			/* testing piurposes
+			/* testing purposes
 			 *  for(int i = 0; i < inventory.size(); i++) {
 			 * System.out.println(inventory.get(i)); }
 			 */
@@ -157,30 +163,47 @@ public class StockManagerSingleton {
 	}
 	
 	//by nitin
-	public boolean saveStock()
-	{
-		try (BufferedWriter writer = new BufferedWriter(new FileWriter(inventoryFilePath))){	
+	public boolean saveStock() {	
+		try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter(inventoryFilePath, false));
+			bw.write("Type,Title,Price,Year,Genre");
+			bw.newLine();
+			
+		
+			String type = null;
+			
+			for(MediaProduct product : inventory) {
+				
+				
+				if(product instanceof CDRecordProduct) {
+					type = "CD";
+				}
+				if(product instanceof VinylRecordProduct) {
+					type = "Vinyl";
+				}
+				if(product instanceof TapeRecordProduct) {
+					type = "Tape";
+				}
+				
+				bw.write(type + "," + product.getTitle() + "," + product.getPrice() + "," + product.getYear() + "," + product.getGenre());
+				bw.newLine();
+			}
+			bw.close();
 			
 			if (inventory.isEmpty()) {
 				System.out.println("Cannot save empty stock.");
 				return false;
 			}
-			writer.write("Title,Price,Year,Genre");
-			writer.newLine();
-
-			// Writing all the stock data to the CSV file
-			for (MediaProduct item : inventory) {
-				writer.write(item.toString());
-				writer.newLine();
-			}
-
+			
 			System.out.println("Stock saved successfully.");
 			return true;
+				
 
-		} catch (IOException e) {
-			System.out.println("Error saving stock: " + e.getMessage());
-			return false;
-		}
+			} catch (IOException e) {
+				e.printStackTrace();
+				return false;
+			}
+			
 		
 	}
 	
@@ -193,7 +216,6 @@ public class StockManagerSingleton {
 				BelowmaxPrice.add(product);
 			}
 		}
-		
 		return BelowmaxPrice;
 	}
 	

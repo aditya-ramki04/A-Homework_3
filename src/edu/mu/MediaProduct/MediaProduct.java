@@ -6,6 +6,11 @@ public class MediaProduct {
 	protected int year;
 	protected Genre genre;
 	
+	@Override
+	public String toString() {
+		return "MediaProduct [title=" + title + ", price=" + price + ", year=" + year + ", genre=" + genre + "]";
+	}
+
 	public MediaProduct(String title, double price, int year, Genre genre) {
 		this.title = title;
 		this.price = price;

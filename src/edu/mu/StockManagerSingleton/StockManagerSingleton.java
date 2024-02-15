@@ -179,44 +179,22 @@ public class StockManagerSingleton {
 	}
 	//by nitin
 	
+	
+	//Abhi Wrote this code
 	public ArrayList<VinylRecordProduct> getVinylRecordList(ArrayList<MediaProduct> productList)
 	{
-		ArrayList<VinylRecordProduct> vinylRecordList = new ArrayList<VinylRecordProduct>();
+		ArrayList<VinylRecordProduct> vinylRecordList = new ArrayList<VinylRecordProduct>(); //makes
+		///VinylRecordProduct ArrayList to hold all the objects that are vinyl
 		
-		for (MediaProduct type : productList) {
-            if (type instanceof VinylRecordProduct) {
+		for (MediaProduct type : productList) 
+		{ //used a for each loop here to loop through the objects
+            if (type instanceof VinylRecordProduct) 
+            { //if it is an instance of VinylRecordProduct then add
+            	//to the vinylRecordList
             	vinylRecordList.add((VinylRecordProduct)type);
             }
         }
-
-		return vinylRecordList;
+		return vinylRecordList; //then return the ArrayList
 
 	}
 	
-	public ArrayList<CDRecordProduct> getCDRecordsList(ArrayList<MediaProduct> productList)
-	{
-		ArrayList<CDRecordProduct> cdRecordList = new ArrayList<CDRecordProduct>();
-		
-		for (MediaProduct type : productList) {
-            if (type instanceof CDRecordProduct) {
-                cdRecordList.add((CDRecordProduct)type);
-            }
-        }
-
-		return cdRecordList;
-	}
-	
-	public ArrayList<TapeRecordProduct>getTapeRecordList(ArrayList<MediaProduct> productList)
-	{
-		ArrayList<TapeRecordProduct> tapeRecordList = new ArrayList<TapeRecordProduct>();
-		
-		for (MediaProduct type : productList) {
-            if (type instanceof TapeRecordProduct) {
-            	tapeRecordList.add((TapeRecordProduct)type);
-            }
-        }
-
-		return tapeRecordList;
-
-	}
-}

@@ -2,46 +2,86 @@ package edu.mu.StockManagerSingleton;
 
 import java.util.ArrayList;
 
+import edu.mu.MediaProduct.CDRecordProduct;
 import edu.mu.MediaProduct.Genre;
 import edu.mu.MediaProduct.MediaProduct;
+import edu.mu.MediaProduct.TapeRecordProduct;
+import edu.mu.MediaProduct.VinylRecordProduct;
 
 public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		StockManagerSingleton stockManager = new StockManagerSingleton();
 		stockManager.initializeStock();
-		//made by nitin to test getMediaProductBelowPrice
 		ArrayList<MediaProduct> BelowmaxPrice = stockManager.getMediaProductBelowPrice((int) 10.0);
-		for(MediaProduct product : BelowmaxPrice) {
-		System.out.println(product);
+		for(MediaProduct product : BelowmaxPrice) 
+		{
+			System.out.println(product);
 		}
-		// // Update the price of a product
+
 		boolean updateSuccessful = stockManager.updateItemPrice(stockManager.getInventory().get(0), 30.0);
-		//System.out.println(stockManager.inventory.get(0).price);
-		// Check if the update was successful
+		System.out.println(stockManager.getInventory().get(0).getPrice());
 		if (updateSuccessful) {
-		System.out.println("Price update successful.");
+			System.out.println("Price update was successful.");
 		} else {
-		System.out.println("Price update failed. Product not found.");
+			System.out.println("Price update has failed.");
 		}
+		
 		MediaProduct mediaProduct = new MediaProduct("CD-test", 101.3, 1999, Genre.CHILDREN);
 		boolean addItemSuccessful = stockManager.addItem(mediaProduct);
 
-		// Check if the addition was successful
-		if (addItemSuccessful) {
-		System.out.println("Product added successfully.");
+		if (addItemSuccessful){
+			System.out.println("Product was added successfully.");
 		} else {
-		System.out.println("Failed to add product. Product may be null.");
+			System.out.println("Failed to add product.");
 		}
+		
 		boolean removeSuccessful = stockManager.removeItem(mediaProduct);
-		// Display the inventory after removing the product
 		System.out.println("\nInventory after attempting to remove the product:");
 		stockManager.printListOfMediaProduct(stockManager.getInventory());
-		// Check if the removal was successful
-		if (removeSuccessful) {
-		System.out.println("\nProduct removed successfully.");
+		
+		if (removeSuccessful){
+			System.out.println("\nProduct was removed successfully.");
 		} else {
-		System.out.println("\nFailed to remove product. Product not found in the inventory.");
+			System.out.println("\nFailed to remove product, not found in inventory.");
 		}
+	
+		StockManagerSingleton sManager = new StockManagerSingleton();
+        ArrayList<MediaProduct> productList = new ArrayList<>();
+        
+        VinylRecordProduct vinylProduct = new VinylRecordProduct("Vinyl 1", 12.99, 2024, Genre.ELECTRONIC);
+        VinylRecordProduct vinylProduct2 = new VinylRecordProduct("Vinyl 2", 12.99, 2024, Genre.ELECTRONIC);
+        productList.add(vinylProduct);
+        productList.add(vinylProduct2);
+
+        CDRecordProduct cdProduct = new CDRecordProduct("CD 1", 9.99, 2023, Genre.CLASSICAL);
+        CDRecordProduct cdProduct2 = new CDRecordProduct("CD 2", 9.99, 2023, Genre.CLASSICAL);
+        productList.add(cdProduct);
+        productList.add(cdProduct2);
+
+        TapeRecordProduct tapeProduct = new TapeRecordProduct("Tape 1", 7.99, 2022, Genre.CHILDREN);
+        TapeRecordProduct tapeProduct2 = new TapeRecordProduct("Tape 2", 7.99, 2022, Genre.CHILDREN);
+        productList.add(tapeProduct);
+        productList.add(tapeProduct2);
+
+        ArrayList<VinylRecordProduct> vinylList = sManager.getVinylRecordList(productList);
+        System.out.println("Vinyl Record List:");
+        for (VinylRecordProduct vinyl : vinylList) {
+            System.out.println(vinyl); // Assuming VinylRecordProduct has overridden toString() method
+        }
+
+        ArrayList<CDRecordProduct> cdList = sManager.getCDRecordsList(productList);
+        System.out.println("\nCD Record List:");
+        for (CDRecordProduct cd : cdList) {
+            System.out.println(cd); // Assuming CDRecordProduct has overridden toString() method
+        }
+
+        // Test getTapeRecordList method
+        ArrayList<TapeRecordProduct> tapeList = sManager.getTapeRecordList(productList);
+        System.out.println("\nTape Record List:");
+        for (TapeRecordProduct tape : tapeList) {
+            System.out.println(tape); // Assuming TapeRecordProduct has overridden toString() method
+        }
+
 	}
 }

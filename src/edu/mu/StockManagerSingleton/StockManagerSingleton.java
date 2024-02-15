@@ -129,7 +129,7 @@ public class StockManagerSingleton {
 	public boolean addItem(MediaProduct product)
 	{
 		if(product != null) {
-			MediaProduct.add(product);
+			getInventory().add(product);
 			return true;
 		}
 		return false;

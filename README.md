@@ -2,7 +2,7 @@ Brief Overview of Project: We are given a csv file containing several lines in w
 
 Functions we wrote:
 Abhinav P: getVinylRecordList(), getCDRecordsList(), getTapeRecordList()
-Aditya R: getInstance(), initializeStock()
+Aditya R: Made MediaProduct class and subclasses, getInstance(), initializeStock()
 Matthew R: updateItemPrice(), addItem, removeItem()
 Nitin C: saveStock(), getMediaProductBelowPrice(), printListOfMediaProduct()
 
